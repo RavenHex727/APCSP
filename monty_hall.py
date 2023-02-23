@@ -75,13 +75,10 @@ def monty_hall_problem(num_simulations):
         selected_door = random.choice(["1", "2", "3"])
         revealed_door = select_reveal_door(doors, selected_door, car_index)
 
-        result_switch = end_game(doors, selected_door, revealed_door, "Y")
-        results_no_switch = end_game(doors, selected_door, revealed_door, "N")
-
-        if results_no_switch == True:
+        if end_game(doors, selected_door, revealed_door, "Y") == True:
             switch_wins += 1
 
-        if results_no_switch == True:
+        if end_game(doors, selected_door, revealed_door, "N") == True:
             stay_wins += 1
         
     return f"Num switch wins: {switch_wins} \n Num stay wins: {stay_wins}"
