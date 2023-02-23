@@ -19,8 +19,7 @@ def select_reveal_door(doors, selected_door, car_index):
   # THE DOOR SHOULD HAVE A GOAT BEHIND IT BUT SHOULD NOT BE THE DOOR THE PLAYER HAS CHOSEN
 
     if int(selected_door) - 1 == car_index:
-        doors_copy = [n + 1 for n in range(len(copy.deepcopy(doors)))]
-        reveal_doors = random.choice(doors_copy.remove(int(selected_door)))
+        reveal_door = random.choice([index for index in range(0, 3) if index != car_index]) + 1
 
     else:
         doors_copy = [n + 1 for n in range(len(copy.deepcopy(doors)))]
@@ -63,10 +62,12 @@ print(end_game(doors, selected_door, revealed_door, switch_response))
 ## MONTY PYTHON SIMULATIONS
 # Define the number of simulations and initialize the counters for wins
 num_simulations = int(input("How many simulations would you like to run on the monty hall python problem?"))
-switch_wins = 0
-stay_wins = 0
+
 
 def monty_hall_problem(num_simulations):
+    switch_wins = 0
+    stay_wins = 0
+
     for _ in range(num_simulations):
         doors = [0, 0, 0]  # 0 represents a goat, 1 represents a car
         car_index = random.randint(0, 2)
@@ -81,9 +82,9 @@ def monty_hall_problem(num_simulations):
             switch_wins += 1
 
         if results_no_switch == True:
-            results_no_switch += 1
+            stay_wins += 1
         
-    return f"Num switch wins: {switch_wins} \n Num stay wins: {results_no_switch}"
+    return f"Num switch wins: {switch_wins} \n Num stay wins: {stay_wins}"
   
 
 # Print the results
