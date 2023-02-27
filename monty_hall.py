@@ -23,16 +23,16 @@ def select_reveal_door(doors, selected_door, car_index):
 
     else:
         doors_copy = [n + 1 for n in range(len(copy.deepcopy(doors)))]
-        doors_copy.remove(selected_door)
-        doors_copy.remove(car_index + 1)
+        doors_copy.remove(int(selected_door))
+        doors_copy.remove(int(car_index + 1))
         reveal_door = doors_copy[0]
 
     return reveal_door
 
 print("YOU HAVE CHOSEN DOOR ", selected_door)
 revealed_door = select_reveal_door(doors, selected_door, car_index)
-print("I CAN REVERAL TO YOU THAT ", revealed_door, " IS NOT HIDING A CAR!")
-switch_response = input("Would you like to switch? Y or N?")
+print("I CAN REVERAL TO YOU THAT ", revealed_door, " IS NOT HIDING A CAR! ")
+switch_response = input("Would you like to switch? Y or N? ")
 
 def end_game(doors, selected_door, revealed_door, switch_response):
   # BASED ON THE PLAYERS SWITCH CHOICE, DECIDE IF THE PLAYER HAS WON
@@ -47,8 +47,8 @@ def end_game(doors, selected_door, revealed_door, switch_response):
             return True
 
     if switch_response == "Y":
-        doors_copy.remove(selected_door)
-        doors_copy.remove(revealed_door)
+        doors_copy.remove(int(selected_door))
+        doors_copy.remove(int(revealed_door))
         remaining_door = doors_copy[0]
 
         if doors[int(remaining_door) - 1] == 1:
@@ -61,18 +61,18 @@ print(end_game(doors, selected_door, revealed_door, switch_response))
 
 ## MONTY PYTHON SIMULATIONS
 # Define the number of simulations and initialize the counters for wins
-num_simulations = int(input("How many simulations would you like to run on the monty hall python problem?"))
+num_simulations = int(input("How many simulations would you like to run on the monty hall python problem? "))
 
 
 def monty_hall_problem(num_simulations):
     switch_wins = 0
     stay_wins = 0
 
-    for _ in range(num_simulations):
+    for n in range(num_simulations):
         doors = [0, 0, 0]  # 0 represents a goat, 1 represents a car
         car_index = random.randint(0, 2)
         doors[car_index] = 1
-        selected_door = int(random.choice(["1", "2", "3"]))
+        selected_door = random.choice(["1", "2", "3"])
         revealed_door = select_reveal_door(doors, selected_door, car_index)
 
         if end_game(doors, selected_door, revealed_door, "Y") == True:
@@ -80,7 +80,7 @@ def monty_hall_problem(num_simulations):
 
         if end_game(doors, selected_door, revealed_door, "N") == True:
             stay_wins += 1
-        
+
     return f"Num switch wins: {switch_wins} \n Num stay wins: {stay_wins}"
   
 
