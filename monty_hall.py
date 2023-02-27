@@ -23,8 +23,8 @@ def select_reveal_door(doors, selected_door, car_index):
 
     else:
         doors_copy = [n + 1 for n in range(len(copy.deepcopy(doors)))]
-        doors_copy.remove(int(selected_door))
-        doors_copy.remove(int(car_index + 1))
+        doors_copy.remove(selected_door)
+        doors_copy.remove(car_index + 1)
         reveal_door = doors_copy[0]
 
     return reveal_door
@@ -47,8 +47,8 @@ def end_game(doors, selected_door, revealed_door, switch_response):
             return True
 
     if switch_response == "Y":
-        doors_copy.remove(int(selected_door))
-        doors_copy.remove(int(revealed_door))
+        doors_copy.remove(selected_door)
+        doors_copy.remove(revealed_door)
         remaining_door = doors_copy[0]
 
         if doors[int(remaining_door) - 1] == 1:
@@ -72,7 +72,7 @@ def monty_hall_problem(num_simulations):
         doors = [0, 0, 0]  # 0 represents a goat, 1 represents a car
         car_index = random.randint(0, 2)
         doors[car_index] = 1
-        selected_door = random.choice(["1", "2", "3"])
+        selected_door = int(random.choice(["1", "2", "3"]))
         revealed_door = select_reveal_door(doors, selected_door, car_index)
 
         if end_game(doors, selected_door, revealed_door, "Y") == True:
