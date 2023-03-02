@@ -38,7 +38,7 @@ def print_guessed_letters(guessed_letters):
         return return_string
 
 
-num_lives = 5 #int(input("How many wrong answers do you want to give yourself? "))
+num_lives = int(input("How many wrong answers do you want to give yourself? "))
 word = random.choice(word_list)
 guessed_letters = []
 
