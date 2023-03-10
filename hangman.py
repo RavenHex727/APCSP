@@ -47,10 +47,6 @@ while num_lives >= 0 and "_" in get_unknown_word(guessed_letters, word):
     print(print_guessed_letters(guessed_letters))
     print("You can guess " + str(num_lives) + " words incorrectly")
     guessed_letter = input("What letter do you think is in the word? ")
-
-    while guessed_letter in guessed_letters:
-        guessed_letter = input("You already geussed that letter. Choose another letter to guess ")
-
     guessed_letters.append(guessed_letter)
 
     if guessed_letter in word:
