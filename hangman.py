@@ -37,8 +37,8 @@ def print_guessed_letters(guessed_letters):
 
         return return_string
 
-
-num_lives = int(input("How many wrong answers do you want to give yourself? "))
+print("Welcome. This is a game where you have to guess a word given you know how many letters are in it. Whenever you guess a word correctly you get to see which position(s) it appears in. Whenever you guess incorrectly you lose a life. There are no special characters and the game is non-case sensitive. Good luck!")
+num_lives = int(input("How many wrong answers do you want to allow yourself? "))
 word = random.choice(word_list)
 guessed_letters = []
 
